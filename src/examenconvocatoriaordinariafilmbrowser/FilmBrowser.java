@@ -6,6 +6,7 @@
 
 package examenconvocatoriaordinariafilmbrowser;
 
+import examenconvocatoriaordinariafilmbrowser.Control.commands.ChangeFilmOrderCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.Command;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.NextFilmCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.NullCommand;
@@ -55,7 +56,7 @@ public class FilmBrowser {
         commands.put("d", new NextFilmCommand(filmBrowser));
         commands.put("a", new PreviousFilmCommand(filmBrowser));
         commands.put("q", new QuitCommand());
-        //commands.put
+        commands.put("o", new ChangeFilmOrderCommand(filmBrowser));
         return commands;
     }
 

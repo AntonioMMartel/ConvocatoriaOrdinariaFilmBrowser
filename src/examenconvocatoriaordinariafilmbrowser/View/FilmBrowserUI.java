@@ -19,5 +19,6 @@ public interface FilmBrowserUI {
     public int getIndex();
     public void setIndex(int i);
     public List<Film> getFilmList();
+    public void changeOrder();
     
 }

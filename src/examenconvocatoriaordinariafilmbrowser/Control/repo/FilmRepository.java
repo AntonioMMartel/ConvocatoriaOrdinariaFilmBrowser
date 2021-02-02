@@ -9,8 +9,6 @@ package examenconvocatoriaordinariafilmbrowser.Control.repo;
 import examenconvocatoriaordinariafilmbrowser.Model.Film;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -50,7 +48,10 @@ public class FilmRepository {
     //asi se queda.
     public static void changeSearchOrder(Comparator<Film> selected) {
         Set<Film> newFilmsList = new TreeSet<>(selected);
-        newFilmsList.add((Film) filmsList);
+        filmsList.forEach(film -> {
+            newFilmsList.add(film);
+        });
+ 
         filmsList = newFilmsList;
     }
      

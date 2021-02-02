@@ -60,7 +60,7 @@ public class Film {
         for ( Entry<Person, Integer> entry : califications.entrySet()) {
             sol = sol + entry.getValue();
         }
-        return sol/califications.size() * 100;
+        return califications.size() == 0? 0 : sol/califications.size() * 100;
     }
 
     public Image getCover() {
