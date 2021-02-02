@@ -34,7 +34,11 @@ public class Film {
         this.duration = duration;
     }
     
-
+    public void isCalified(Person person, int calification){
+        califications.put(person, calification);
+    }
+    
+    
     public void isViewed() {
         views = views + 1;
     }
@@ -74,6 +78,14 @@ public class Film {
     public List<Person> getActors() {
         return actors;
     }
+    
+    private String actorsToString() {
+        String texto = "";
+        for (Person actor : actors) {
+            texto = texto + actor.getFullname();
+        }
+        return texto;
+    }
 
     public long getDuration() {
         return duration;
@@ -81,7 +93,7 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" + "name=" + name + ", genre=" + genre + ", views=" + views + ", califications=" + califications + ", cover=" + cover + ", director=" + director + ", actors=" + actors + ", duration=" + duration + '}';
+        return  name + " ,genero=" + genre + ", views=" + views + ", calification=" + getCalification() + ", cover=" + cover + ", director=" + director + ", actors=" + actorsToString() + ", duration=" + duration;
     }
     
     

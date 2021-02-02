@@ -7,10 +7,11 @@
 package examenconvocatoriaordinariafilmbrowser.Control.repo;
 
 import examenconvocatoriaordinariafilmbrowser.Model.Film;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.List;
 
 
 /**
@@ -22,12 +23,12 @@ import java.util.TreeSet;
  */
 public class FilmRepository {
 
-    private static Set<Film> filmsList;
+    private static List<Film> filmsList;
     
 
     public FilmRepository() {
         // Especificamos un default
-       filmsList = new TreeSet<>(FilmComparator.getNameComparator());
+       filmsList = new ArrayList<>();
     }
     
     public static void add(Collection<Film> filmsList){
@@ -40,19 +41,14 @@ public class FilmRepository {
        FilmRepository.filmsList.add(film);
     }
     
-    public static Set<Film> get() {
+    public static List<Film> get() {
         return filmsList;
     }
     
     // Me da mala vibra este metodo pero bueno voy con prisas asi que
     //asi se queda.
     public static void changeSearchOrder(Comparator<Film> selected) {
-        Set<Film> newFilmsList = new TreeSet<>(selected);
-        filmsList.forEach(film -> {
-            newFilmsList.add(film);
-        });
- 
-        filmsList = newFilmsList;
+        Collections.sort(filmsList, selected);
     }
      
     

@@ -40,9 +40,10 @@ public final class MockFilmBrowserUI implements FilmBrowserUI {
     
     private void message() {
         System.out.println("Press a to see previous film");
-        System.out.println("Press d to see next image");
+        System.out.println("Press d to see the next film");
         System.out.println("Press q to quit");
         System.out.println("Press o to change the order in which films are visualized.");
+        System.out.println("Prss s to see current film");
     }
     
     private void initComparators() {
@@ -69,8 +70,7 @@ public final class MockFilmBrowserUI implements FilmBrowserUI {
     }
     
     public void update(){
-        filmList = new ArrayList<>(filmRepo.get());
-        System.out.println(filmList);
+        filmList = new ArrayList<>(FilmRepository.get());
         index = 0;
     }
 
@@ -106,8 +106,4 @@ public final class MockFilmBrowserUI implements FilmBrowserUI {
         this.filmList = filmList;
     }
 
-   
-    
-    
-    
 }

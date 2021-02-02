@@ -8,6 +8,7 @@ package examenconvocatoriaordinariafilmbrowser;
 
 import examenconvocatoriaordinariafilmbrowser.Control.commands.ChangeFilmOrderCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.Command;
+import examenconvocatoriaordinariafilmbrowser.Control.commands.CurrentFilmCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.NextFilmCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.NullCommand;
 import examenconvocatoriaordinariafilmbrowser.Control.commands.PreviousFilmCommand;
@@ -36,7 +37,7 @@ public class FilmBrowser {
         
         
         FilmRepository filmRepo = new FilmRepository();
-        filmRepo.add(films);
+        FilmRepository.add(films);
         
         FilmBrowserUI filmBrowser = new MockFilmBrowserUI(filmRepo);
         
@@ -45,7 +46,6 @@ public class FilmBrowser {
         Scanner scanner = new Scanner(System.in);
         while(true){
             String input = scanner.next();
-            //if (commands.containsKey(input)) commands.get(input).execute();
             commands.getOrDefault(input, new NullCommand()).execute();
         }
         
@@ -55,6 +55,7 @@ public class FilmBrowser {
         Map<String, Command> commands = new HashMap<>();
         commands.put("d", new NextFilmCommand(filmBrowser));
         commands.put("a", new PreviousFilmCommand(filmBrowser));
+        commands.put("s", new CurrentFilmCommand(filmBrowser));
         commands.put("q", new QuitCommand());
         commands.put("o", new ChangeFilmOrderCommand(filmBrowser));
         return commands;
